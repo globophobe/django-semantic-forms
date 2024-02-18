@@ -53,10 +53,10 @@ class SemanticCalendarMixin:
         try:
             url = reverse("javascript-catalog")
         except NoReverseMatch:
-            js.append("semantic_forms/semanticTranslatedCalendar.js")
+            js.append("semantic_forms/semanticUntranslatedCalendar.js")
         else:
             js.append(url)
-            js.append("semantic_forms/semanticUntranslatedCalendar.js")
+            js.append("semantic_forms/semanticTranslatedCalendar.js")
         return forms.Media(js=js)
 
 
