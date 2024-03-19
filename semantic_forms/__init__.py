@@ -9,6 +9,7 @@ from .fields import (
     SemanticTypedChoiceField,
     SemanticTypedMultipleChoiceField,
 )
+from .forms import SemanticForm, SemanticModelForm
 from .widgets import (
     SemanticCheckboxInput,
     SemanticCheckboxSelectMultiple,
@@ -41,6 +42,8 @@ __all__ = [
     "SemanticTimeField",
     "SemanticTypedChoiceField",
     "SemanticTypedMultipleChoiceField",
+    "SemanticForm",
+    "SemanticModelForm",
     "SemanticCheckboxInput",
     "SemanticCheckboxSelectMultiple",
     "SemanticClearableFileInput",
