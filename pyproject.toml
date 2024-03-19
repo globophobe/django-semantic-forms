@@ -9,7 +9,10 @@ homepage = "https://github.com/globophobe/django-semantic-forms"
 repository = "https://github.com/globophobe/django-semantic-forms"
 keywords = ["django", "semantic", "forms"]
 classifiers = ["Framework :: Django", "Development Status :: 4 - Beta", "Operating System :: OS Independent"]
-packages = [{ include = "semantic_forms" }]
+packages = [
+  { include = "semantic_forms" },
+  { include = "demo_app", from = "demo", to = "semantic_forms_docs" }
+]
 
 [tool.poetry.dependencies]
 python = ">=3.8"
@@ -17,7 +20,9 @@ django = ">=3.2"
 
 [tool.poetry.dev-dependencies]
 black = "*"
+django-debug-toolbar = "*"
 mkdocs = "*"
+python-decouple = "*"
 ruff = "*"
 
 [tool.ruff]
