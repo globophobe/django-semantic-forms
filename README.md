@@ -9,7 +9,7 @@ Why?
 
 * JavaScript datepicker and timepicker components.
 * JavaScript selects, including multiple selections, which integrate well with Django autocomplete fields.
-* Semantic UI has libraries for [React](https://react.semantic-ui.com/) and [Vue](https://semantic-ui-vue.github.io/#/), in addition to jQuery. This means you can save time by using django-semantic-forms for simple forms, and use React or Vue for more complicated use cases.
+* Semantic UI has libraries for [React](https://react.semantic-ui.com/) and [Vue](https://semantic-ui-vue.github.io/#/), in addition to jQuery. This means you can save time by using django-semantic-forms for simple forms, and use React or Vue for more complex use cases.
 
 
 Install
@@ -36,7 +36,7 @@ This package use [Fomantic UI](https://fomantic-ui.com/) the official community 
 
 For example:
 
-```
+```html
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js"></script>

@@ -1,0 +1,34 @@
+{% load semantic_forms %}
+{% for field, error in fields %}
+<div class="field{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and error %} error{% endif %}{% if field.field.is_hidden %} hidden{% endif %}">
+  {% if field|is_checkbox %}
+    <div class="ui checkbox">
+  {% endif %}
+
+  {% if not field|is_checkbox and not field.is_hidden %}
+      {{ field.label_tag }}
+  {% endif %}
+
+  {% if field.is_readonly %}
+      <div class="readonly">
+        {% if field.contents %}{{ field.contents }}{% else %}&nbsp;{% endif %}
+      </div>
+  {% else %}
+      {{ field }}
+  {% endif %}
+
+  {% if field|is_checkbox %}
+      {{ field.label_tag }}
+  {% endif %}
+
+  {% if not form.fields|length_is:'1' and not field.is_readonly %}{{ error }}{% endif %}
+  {% if field|is_checkbox %}
+      </div>
+  {% endif %}
+
+  {% if field.help_text %}
+      <div class="help">{{ field.help_text|safe }}</div>
+  {% endif %}
+  {% if fields|length_is:'1' %}{{ errors }}{% endif %}
+</div>
+{% endfor %}

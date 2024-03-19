@@ -1,6 +1,4 @@
-<div class="inline fields">
-    {% with id=widget.attrs.id %}
-    <div{% if id %} id="{{ id }}"{% endif %} class="field{% if widget.attrs.class %} {{ widget.attrs.class }}{% endif %}">
+<div {% if widget.attrs.id %} id="{{ widget.attrs.id }}"{% endif %} class="inline fields{% if widget.attrs.class %} {{ widget.attrs.class }}{% endif %}">
     {% for group, options, index in widget.optgroups %}
 
         {% comment %}Semantic has no option groups!
@@ -8,9 +6,7 @@
         {% endcomment %}
 
         {% for option in options %}
-            <div class="ui checkbox">
-                {% include option.template_name with widget=option %}
-            </div>
+            {% include option.template_name with widget=option %}
         {% endfor %}
         
         
@@ -19,6 +15,4 @@
         {% endcomment %}
         
     {% endfor %}
-    </div>
-    {% endwith %}
 </div>

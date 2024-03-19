@@ -4,7 +4,14 @@ from django import forms
 from django.urls import NoReverseMatch, reverse
 
 
-class SemanticSelectMixin:
+class SemanticMixin:
+    """Semantic mixin."""
+
+    class Media:
+        css = {"all": ["semantic_forms/unsemantic.css"]}
+
+
+class SemanticSelectMixin(SemanticMixin):
     """Semantic select mixin."""
 
     template_name = "semantic_ui/forms/widgets/select.html"
@@ -21,7 +28,7 @@ class SemanticSelectMultiple(SemanticSelectMixin, forms.SelectMultiple):
     """Semantic select multiple."""
 
 
-class SemanticCheckboxMixin:
+class SemanticCheckboxMixin(SemanticMixin):
     """Semantic checkbox mixin."""
 
     class Media:
@@ -43,7 +50,7 @@ class SemanticCheckboxSelectMultiple(
     option_template_name = "semantic_ui/forms/widgets/checkbox_option.html"
 
 
-class SemanticCalendarMixin:
+class SemanticCalendarMixin(SemanticMixin):
     """Semantic calendar mixin."""
 
     @property
@@ -92,14 +99,14 @@ class SemanticTimeInput(SemanticCalendarMixin, forms.TimeInput):
     template_name = "semantic_ui/forms/widgets/time.html"
 
 
-class SemanticEmailInput(forms.EmailInput):
+class SemanticEmailInput(SemanticMixin, forms.EmailInput):
     """Semantic email input."""
 
     # TODO
     # template_name = "semantic_ui/forms/widgets/email.html"
 
 
-class SemanticFileInput(forms.ClearableFileInput):
+class SemanticFileInput(SemanticMixin, forms.ClearableFileInput):
     """Semantic file input."""
 
     template_name = "semantic_ui/forms/widgets/clearable_file_input.html"
@@ -109,40 +116,40 @@ class SemanticImageInput(SemanticFileInput):
     """Semantic image input."""
 
 
-class SemanticClearableFileInput(forms.ClearableFileInput):
+class SemanticClearableFileInput(SemanticMixin, forms.ClearableFileInput):
     """Semantic clearable file input."""
 
     template_name = "semantic_ui/forms/widgets/clearable_file_input.html"
 
 
-class SemanticNumberInput(forms.NumberInput):
+class SemanticNumberInput(SemanticMixin, forms.NumberInput):
     """Semantic number input."""
 
 
-class SemanticPasswordInput(forms.NumberInput):
+class SemanticPasswordInput(SemanticMixin, forms.NumberInput):
     """Semantic password input."""
 
 
-class SemanticRadioSelect(forms.RadioSelect):
+class SemanticRadioSelect(SemanticMixin, forms.RadioSelect):
     """Semantic radio select."""
 
     template_name = "semantic_ui/forms/widgets/radio.html"
     option_template_name = "semantic_ui/forms/widgets/radio_option.html"
 
 
-class SemanticTextarea(forms.Textarea):
+class SemanticTextarea(SemanticMixin, forms.Textarea):
     """Semantic textara."""
 
     template_name = "semantic_ui/forms/widgets/textarea.html"
 
 
-class SemanticTextInput(forms.TextInput):
+class SemanticTextInput(SemanticMixin, forms.TextInput):
     """Semantic text input."""
 
     template_name = "semantic_ui/forms/widgets/text.html"
 
 
-class SemanticURLInput(forms.URLInput):
+class SemanticURLInput(SemanticMixin, forms.URLInput):
     """Semantic URL input."""
 
     template_name = "semantic_ui/forms/widgets/url.html"
