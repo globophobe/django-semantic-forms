@@ -9,7 +9,6 @@ $(document).ready(function () {
         fullTextSearch: true,
         forceSelection: false, // https://github.com/Semantic-Org/Semantic-UI/issues/4506
       });
-      // b/c not idempotent.
       $(this).addClass("initialized");
     });
 });
