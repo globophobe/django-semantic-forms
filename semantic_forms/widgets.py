@@ -14,7 +14,7 @@ class SemanticMixin:
 class SemanticSelectMixin(SemanticMixin):
     """Semantic select mixin."""
 
-    template_name = "semantic_ui/forms/widgets/select.html"
+    template_name = "semantic_forms/forms/widgets/select.html"
 
     class Media:
         js = ["semantic_forms/semanticDropdown.js"]
@@ -38,7 +38,7 @@ class SemanticCheckboxMixin(SemanticMixin):
 class SemanticCheckboxInput(SemanticCheckboxMixin, forms.CheckboxInput):
     """Semantic checkbox input."""
 
-    template_name = "semantic_ui/forms/widgets/checkbox.html"
+    template_name = "semantic_forms/forms/widgets/checkbox.html"
 
 
 class SemanticCheckboxSelectMultiple(
@@ -46,8 +46,8 @@ class SemanticCheckboxSelectMultiple(
 ):
     """Semantic checkbox select multiple."""
 
-    template_name = "semantic_ui/forms/widgets/checkbox_select.html"
-    option_template_name = "semantic_ui/forms/widgets/checkbox_option.html"
+    template_name = "semantic_forms/forms/widgets/checkbox_select.html"
+    option_template_name = "semantic_forms/forms/widgets/checkbox_option.html"
 
 
 class SemanticCalendarMixin(SemanticMixin):
@@ -70,7 +70,7 @@ class SemanticCalendarMixin(SemanticMixin):
 class SemanticDateTimeInput(SemanticCalendarMixin, forms.DateTimeInput):
     """Semantic date time input."""
 
-    template_name = "semantic_ui/forms/widgets/datetime.html"
+    template_name = "semantic_forms/forms/widgets/datetime.html"
 
     def __init__(
         self, attrs: Optional[dict] = None, format: Optional[str] = None
@@ -83,7 +83,7 @@ class SemanticDateTimeInput(SemanticCalendarMixin, forms.DateTimeInput):
 class SemanticDateInput(SemanticCalendarMixin, forms.DateInput):
     """Semantic date input."""
 
-    template_name = "semantic_ui/forms/widgets/date.html"
+    template_name = "semantic_forms/forms/widgets/date.html"
 
     def __init__(
         self, attrs: Optional[dict] = None, format: Optional[str] = None
@@ -96,20 +96,20 @@ class SemanticDateInput(SemanticCalendarMixin, forms.DateInput):
 class SemanticTimeInput(SemanticCalendarMixin, forms.TimeInput):
     """Semantic time input."""
 
-    template_name = "semantic_ui/forms/widgets/time.html"
+    template_name = "semantic_forms/forms/widgets/time.html"
 
 
 class SemanticEmailInput(SemanticMixin, forms.EmailInput):
     """Semantic email input."""
 
     # TODO
-    # template_name = "semantic_ui/forms/widgets/email.html"
+    # template_name = "semantic_forms/forms/widgets/email.html"
 
 
 class SemanticFileInput(SemanticMixin, forms.ClearableFileInput):
     """Semantic file input."""
 
-    template_name = "semantic_ui/forms/widgets/clearable_file_input.html"
+    template_name = "semantic_forms/forms/widgets/clearable_file_input.html"
 
 
 class SemanticImageInput(SemanticFileInput):
@@ -119,7 +119,7 @@ class SemanticImageInput(SemanticFileInput):
 class SemanticClearableFileInput(SemanticMixin, forms.ClearableFileInput):
     """Semantic clearable file input."""
 
-    template_name = "semantic_ui/forms/widgets/clearable_file_input.html"
+    template_name = "semantic_forms/forms/widgets/clearable_file_input.html"
 
 
 class SemanticNumberInput(SemanticMixin, forms.NumberInput):
@@ -133,26 +133,26 @@ class SemanticPasswordInput(SemanticMixin, forms.NumberInput):
 class SemanticRadioSelect(SemanticMixin, forms.RadioSelect):
     """Semantic radio select."""
 
-    template_name = "semantic_ui/forms/widgets/radio.html"
-    option_template_name = "semantic_ui/forms/widgets/radio_option.html"
+    template_name = "semantic_forms/forms/widgets/radio.html"
+    option_template_name = "semantic_forms/forms/widgets/radio_option.html"
 
 
 class SemanticTextarea(SemanticMixin, forms.Textarea):
     """Semantic textara."""
 
-    template_name = "semantic_ui/forms/widgets/textarea.html"
+    template_name = "semantic_forms/forms/widgets/textarea.html"
 
 
 class SemanticTextInput(SemanticMixin, forms.TextInput):
     """Semantic text input."""
 
-    template_name = "semantic_ui/forms/widgets/text.html"
+    template_name = "semantic_forms/forms/widgets/text.html"
 
 
 class SemanticURLInput(SemanticMixin, forms.URLInput):
     """Semantic URL input."""
 
-    template_name = "semantic_ui/forms/widgets/url.html"
+    template_name = "semantic_forms/forms/widgets/url.html"
 
 
 class RangeWidget(forms.MultiWidget):
