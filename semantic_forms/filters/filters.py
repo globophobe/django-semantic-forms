@@ -9,6 +9,7 @@ from django_filters.filters import (
     TimeFilter,
     TypedMultipleChoiceFilter,
 )
+
 from semantic_forms.fields import (
     SemanticChoiceField,
     SemanticDateField,

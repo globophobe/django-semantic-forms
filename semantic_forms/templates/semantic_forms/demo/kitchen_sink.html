@@ -1,0 +1,52 @@
+{% extends "semantic_forms/base.html" %}
+{% load i18n %}
+
+{% block title %}Semantic Forms{% endblock %}
+
+{% block extrahead %}
+{{ form.media }}
+{% endblock %}
+
+{% block content %}
+<div class="ui container">
+  <div class="ui basic segment">
+    <h2>Semantic Forms</h2>
+
+    {% block messages %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="ui
+              {% if message.tags %}
+                {% with message.tags as tags %}
+                {% if tags == 'debug' %}
+                {% elif tags == 'info' %}info
+                {% elif tags == 'success' %}success
+                {% elif tags == 'warning' %}warning
+                {% elif tags == 'error' %}negative
+                {% endif %}
+                {% endwith %}
+              {% endif %} message"
+              >{{ message|capfirst }}
+            </div>
+        {% endfor %}
+      {% endif %}
+    {% endblock messages %}
+
+    <form class="ui form{% if errors %} error{% endif %}" action="/forms/" method="post" novalidate>{% csrf_token %}
+      <div class="width-100">
+        {% if errors %}
+            <div class="ui message error">
+            {% blocktranslate count counter=errors|length %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktranslate %}
+            </div>
+        {% endif %}
+
+        <div class="ui segment">{{ form }}</div>
+
+        <div class="ui basic segment" style="margin-top: 0;">
+          <button type="submit" class="ui fluid blue button" value="{% trans 'Submit' %}" name="submit" />{% trans 'Submit' %}</button>
+        </div>
+    </form>
+
+  </div>
+</div>
+{% endblock %}
