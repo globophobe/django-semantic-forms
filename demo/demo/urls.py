@@ -15,10 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from demo_app.views import semantic_form_demo
+from demo_app.views import semantic_forms_kitchen_sink
 from django.urls import include, path
 
 urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
-    path("forms/", semantic_form_demo),
+    path("forms/", semantic_forms_kitchen_sink),
 ]
