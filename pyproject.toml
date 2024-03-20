@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-semantic-forms"
-version = "0.1.3"
+version = "0.1.4"
 description = "Django Semantic UI forms"
 authors = ["Alex <globophobe@gmail.com>"]
 readme = "README.md"
@@ -11,7 +11,7 @@ keywords = ["django", "semantic", "forms"]
 classifiers = ["Framework :: Django", "Development Status :: 4 - Beta", "Operating System :: OS Independent"]
 packages = [
   { include = "semantic_forms" },
-  { include = "demo_app", from = "demo", to = "semantic_forms_docs" }
+  { include = "*", from = "demo/demo_app", to = "semantic_forms/docs" },
 ]
 
 [tool.poetry.dependencies]
@@ -28,7 +28,7 @@ ruff = "*"
 [tool.ruff]
 line-length = 88
 target-version = "py38"
-ignore = [
+lint.ignore = [
     "ANN002", # Missing type annotation for *{name}
     "ANN003", # Missing type annotation for **{name}
     "ANN101", # Missing type annotation for {name} in method
@@ -60,7 +60,7 @@ ignore = [
     "PTH123", # open() should be replaced by Path.open()
     "UP032", # [*] Use f-string instead of `format` call
 ]
-select = [
+lint.select = [
     "ANN", # flake8-annotations
     "B", # flake8-bugbear
     "D", # pydocstyle
@@ -75,12 +75,12 @@ select = [
     "RUF200", # invalid-pyproject-toml
     "W", # pycodestyle
 ]
-unfixable = ["F401", "F841"]
+lint.unfixable = ["F401", "F841"]
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "**/tests/*" = ["ANN", "D"]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 known-first-party = ["semantic_forms"]
 
 [build-system]
