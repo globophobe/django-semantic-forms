@@ -32,7 +32,7 @@ INSTALLED_APPS = [
 
 Please remember to run `python manage.py collectstatic` for production deployments.
 
-This package use [Fomantic UI](https://fomantic-ui.com/) the official community fork of Semantic UI. Please add the Fomantic UI dependencies to your Django template.
+This package uses [Fomantic UI](https://fomantic-ui.com/) the official community fork of Semantic UI. Please add the Fomantic UI dependencies to your Django template.
 
 For example:
 
