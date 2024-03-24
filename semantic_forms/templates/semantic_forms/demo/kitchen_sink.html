@@ -5,12 +5,50 @@
 
 {% block extrahead %}
 {{ form.media }}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/googlecode.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/django.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/python.min.js"></script>
+
+<style type="text/css">
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin-bottom: 1em;
+}
+
+code {
+  display: block;
+  padding: 1em !important;
+  background-color: #f8f8f8 !important;
+}
+
+code.inline {
+  display: inline;
+  padding: 0.25em !important;
+}
+</style>
 {% endblock %}
 
 {% block content %}
 <div class="ui container">
   <div class="ui basic segment">
     <h2>Semantic Forms</h2>
+    
+    <div class="ui segment">
+      Import from <code class="inline">semantic_forms</code>
+      <pre><code>from semantic_forms import SemanticForm, SemanticModelForm, SemanticCharField, SemanticDateTimeField, SemanticDateField, SemanticTimeField, SemanticTextareaField, SemanticCheckboxField, SemanticRadioChoiceField, SemanticCheckboxMultipleChoiceField, SemanticChoiceField, SemanticMultipleChoiceField</code></pre>
+
+      Subclass <code class="inline">SemanticForm</code> or <code class="inline">SemanticModelForm</code>
+
+      <pre><code>class AwesomeForm(SemanticForm):
+    field = SemanticCharField()</code></pre>
+
+      Inherit from <code class="inline">semantic_ui/base.html</code>
+      <pre><code>{{ basic_template }}</code></pre>
+    </div>
 
     {% block messages %}
       {% if messages %}
@@ -49,4 +87,14 @@
 
   </div>
 </div>
+{% endblock %}
+
+{% block extrascript %}
+<script type="text/javascript">
+$( document ).ready(function() {
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+</script>
 {% endblock %}

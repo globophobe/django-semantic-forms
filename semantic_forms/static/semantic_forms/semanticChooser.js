@@ -54,7 +54,6 @@ function semanticChooser() {
         forceSelection: false,
         saveRemoteData: false,
       });
-      // b/c not idempotent.
       $(this).addClass("initialized");
     });
 }

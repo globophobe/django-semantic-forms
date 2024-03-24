@@ -17,8 +17,10 @@ Including another URLconf
 
 from demo_app.views import semantic_forms_kitchen_sink
 from django.urls import include, path
+from django.views.i18n import JavaScriptCatalog
 
 urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
-    path("forms/", semantic_forms_kitchen_sink),
+    path("jsi18n/", JavaScriptCatalog.as_view(), name="javascript-catalog"),
+    path("forms/", semantic_forms_kitchen_sink, name="semantic-forms-kitchen-sink"),
 ]
