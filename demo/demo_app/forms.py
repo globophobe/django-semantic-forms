@@ -85,7 +85,7 @@ class SemanticKitchenSinkForm(SemanticForm):
     select_field = SemanticChoiceField(
         label=_("Select"),
         help_text=format_html(
-            "</pre><code>select_field = SemanticChoiceField()</code></pre>"
+            "<pre><code>select_field = SemanticChoiceField()</code></pre>"
         ),
         choices=Colors.choices,
     )
