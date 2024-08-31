@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-semantic-forms"
-version = "0.1.5"
+version = "0.1.6"
 description = "Django Semantic UI forms"
 authors = ["Alex <globophobe@gmail.com>"]
 readme = "README.md"
@@ -15,7 +15,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.8"
+python = ">=3.10"
 django = ">=3.2"
 
 [tool.poetry.dev-dependencies]
