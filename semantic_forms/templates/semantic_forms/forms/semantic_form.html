@@ -21,7 +21,7 @@
       {{ field.label_tag }}
   {% endif %}
 
-  {% if not form.fields|length_is:'1' and not field.is_readonly %}{{ error }}{% endif %}
+  {% if not form.fields|length == 1 and not field.is_readonly %}{{ error }}{% endif %}
   {% if field|is_checkbox %}
       </div>
   {% endif %}
@@ -29,6 +29,6 @@
   {% if field.help_text %}
       <div class="help">{{ field.help_text|safe }}</div>
   {% endif %}
-  {% if fields|length_is:'1' %}{{ errors }}{% endif %}
+  {% if fields|length == 1 %}{{ errors }}{% endif %}
 </div>
 {% endfor %}
