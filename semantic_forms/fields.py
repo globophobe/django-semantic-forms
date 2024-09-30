@@ -6,6 +6,7 @@ from .widgets import (
     SemanticDateInput,
     SemanticDateTimeInput,
     SemanticFileInput,
+    SemanticNumberInput,
     SemanticRadioSelect,
     SemanticSelect,
     SemanticSelectMultiple,
@@ -23,6 +24,30 @@ class SemanticCharField(forms.CharField):
 
 class SemanticTextareaField(forms.CharField):
     """Semantic textarea field."""
+
+    widget = SemanticTextarea
+
+
+class SemanticIntegerField(forms.IntegerField):
+    """Semantic integer field."""
+
+    widget = SemanticNumberInput
+
+
+class SemanticFloatField(forms.FloatField):
+    """Semantic float field."""
+
+    widget = SemanticNumberInput
+
+
+class SemanticDecimalField(forms.DecimalField):
+    """Semantic decimal field."""
+
+    widget = SemanticNumberInput
+
+
+class SemanticJsonField(forms.JSONField):
+    """Semantic json field."""
 
     widget = SemanticTextarea
 
