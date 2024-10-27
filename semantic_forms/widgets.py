@@ -132,7 +132,7 @@ class SemanticNumberInput(SemanticMixin, forms.NumberInput):
     """Semantic number input."""
 
 
-class SemanticPasswordInput(SemanticMixin, forms.PaswordInput):
+class SemanticPasswordInput(SemanticMixin, forms.PasswordInput):
     """Semantic password input."""
 
 
