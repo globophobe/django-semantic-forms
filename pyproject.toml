@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-semantic-forms"
-version = "0.1.8"
+version = "0.1.9"
 description = "Django Semantic UI forms"
 authors = ["Alex <globophobe@gmail.com>"]
 readme = "README.md"
@@ -23,11 +23,11 @@ black = "*"
 django-debug-toolbar = "*"
 mkdocs = "*"
 python-decouple = "*"
-ruff = "<0.5.0"
+ruff = "*"
 
 [tool.ruff]
 line-length = 88
-target-version = "py38"
+target-version = "py310"
 lint.ignore = [
     "ANN002", # Missing type annotation for *{name}
     "ANN003", # Missing type annotation for **{name}
