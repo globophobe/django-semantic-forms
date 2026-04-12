@@ -29,13 +29,12 @@ const months = [
 function getCalendarText(hasJavascriptCatalog) {
   if (hasJavascriptCatalog) {
     return {
-      days: ["S", "M", "T", "W", "T", "F", "S"].map(function (
-        oneLetterDay,
-        index
-      ) {
-        const day = days[index];
-        return pgettext(`one letter ${day}`, oneLetterDay);
-      }),
+      days: ["S", "M", "T", "W", "T", "F", "S"].map(
+        function (oneLetterDay, index) {
+          const day = days[index];
+          return pgettext(`one letter ${day}`, oneLetterDay);
+        },
+      ),
       months: months.map(function (month) {
         return gettext(month);
       }),
@@ -66,7 +65,7 @@ function getCalendarOptions(type, hasJavascriptCatalog) {
   return {
     type,
     formatter: {
-      date: function (date, settings) {
+      date: function (date, _settings) {
         if (!date) return "";
         const year = date.getFullYear();
         const month = ("0" + (date.getMonth() + 1)).slice(-2);

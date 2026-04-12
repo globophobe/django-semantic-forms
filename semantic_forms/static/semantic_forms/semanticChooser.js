@@ -14,8 +14,8 @@ function semanticChooser() {
       var id = $select.attr("id");
       var optionValue = $("#" + id + "-value").val();
       if (optionValue) {
-        var reverseUrl = $select.data("ajax-url");
-        var lookupUrl =
+        const reverseUrl = $select.data("ajax-url");
+        const lookupUrl =
           reverseUrl.substring(0, reverseUrl.length - 1) +
           "-reverse/?id=" +
           optionValue;
@@ -51,7 +51,7 @@ function semanticChooser() {
             response.results = response.results.map((result) => {
               return Object.assign(
                 { value: result.id, name: result.name || result.text },
-                result
+                result,
               );
             });
             return response;
