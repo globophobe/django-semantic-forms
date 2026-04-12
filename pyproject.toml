@@ -20,6 +20,11 @@ dependencies = [
     "django>=4.2",
 ]
 
+[project.optional-dependencies]
+filters = [
+    "django-filter",
+]
+
 [project.urls]
 Homepage = "https://github.com/globophobe/django-semantic-forms"
 Repository = "https://github.com/globophobe/django-semantic-forms"
