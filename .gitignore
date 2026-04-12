@@ -1,5 +1,6 @@
 .coverage
 .env
+.venv/
 *.pyc
 *.sqlite3
 
