@@ -1,7 +1,8 @@
-<div {% if widget.attrs.id %} id="{{ widget.attrs.id }}"{% endif %} class="inline fields{% if widget.attrs.class %} {{ widget.attrs.class }}{% endif %}">
+<div {% if widget.attrs.id %}id="{{ widget.attrs.id }}"{% endif %}
+     class="inline fields{% if widget.attrs.class %} {{ widget.attrs.class }}{% endif %}">
     {% for group, options, index in widget.optgroups %}
         {% for option in options %}
-        {% include option.template_name with widget=option %}
+            {% include option.template_name with widget=option %}
         {% endfor %}
     {% endfor %}
 </div>

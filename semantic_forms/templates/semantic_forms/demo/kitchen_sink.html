@@ -1,18 +1,16 @@
 {% extends "semantic_forms/base.html" %}
 {% load i18n %}
-
 {% block title %}Semantic Forms{% endblock %}
-
 {% block extrahead %}
-{{ form.media }}
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/googlecode.min.css">
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/django.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/python.min.js"></script>
-
-<style type="text/css">
+    {{ form.media }}
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/googlecode.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/django.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/python.min.js"></script>
+    <style type="text/css">
 pre {
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -29,72 +27,58 @@ code.inline {
   display: inline;
   padding: 0.25em !important;
 }
-</style>
+    </style>
 {% endblock %}
-
 {% block content %}
-<div class="ui container">
-  <div class="ui basic segment">
-    <h2>Semantic Forms</h2>
-    
-    <div class="ui segment">
-      Import from <code class="inline">semantic_forms</code>
-      <pre><code>from semantic_forms import SemanticForm, SemanticModelForm, SemanticCharField, SemanticDateTimeField, SemanticDateField, SemanticTimeField, SemanticTextareaField, SemanticCheckboxField, SemanticRadioChoiceField, SemanticCheckboxMultipleChoiceField, SemanticChoiceField, SemanticMultipleChoiceField</code></pre>
-
-      Subclass <code class="inline">SemanticForm</code> or <code class="inline">SemanticModelForm</code>
-
-      <pre><code>class AwesomeForm(SemanticForm):
-    field = SemanticCharField()</code></pre>
-
-      Inherit from <code class="inline">semantic_ui/base.html</code>
-      <pre><code>{{ basic_template }}</code></pre>
-    </div>
-
-    {% block messages %}
-      {% if messages %}
-        {% for message in messages %}
-          <div class="ui
-              {% if message.tags %}
-                {% with message.tags as tags %}
-                {% if tags == 'debug' %}
-                {% elif tags == 'info' %}info
-                {% elif tags == 'success' %}success
-                {% elif tags == 'warning' %}warning
-                {% elif tags == 'error' %}negative
+    <div class="ui container">
+        <div class="ui basic segment">
+            <h2>Semantic Forms</h2>
+            <div class="ui segment">
+                Import from <code class="inline">semantic_forms</code>
+                <pre><code>from semantic_forms import SemanticForm, SemanticModelForm, SemanticCharField, SemanticDateTimeField, SemanticDateField, SemanticTimeField, SemanticTextareaField, SemanticCheckboxField, SemanticRadioChoiceField, SemanticCheckboxMultipleChoiceField, SemanticChoiceField, SemanticMultipleChoiceField</code></pre>
+                Subclass <code class="inline">SemanticForm</code> or <code class="inline">SemanticModelForm</code>
+                <pre><code>class AwesomeForm(SemanticForm):
+field = SemanticCharField()</code></pre>
+                Inherit from <code class="inline">semantic_ui/base.html</code>
+                <pre><code>{{ basic_template }}</code></pre>
+            </div>
+            {% block messages %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="ui {% if message.tags %} {% with message.tags as tags %} {% if tags == 'debug' %} {% elif tags == 'info' %}info {% elif tags == 'success' %}success {% elif tags == 'warning' %}warning {% elif tags == 'error' %}negative {% endif %} {% endwith %} {% endif %} message">
+                            {{ message|capfirst }}
+                        </div>
+                    {% endfor %}
                 {% endif %}
-                {% endwith %}
-              {% endif %} message"
-              >{{ message|capfirst }}
-            </div>
-        {% endfor %}
-      {% endif %}
-    {% endblock messages %}
-
-    <form class="ui form{% if errors %} error{% endif %}" action="/forms/" method="post" novalidate>{% csrf_token %}
-      <div class="width-100">
-        {% if errors %}
-            <div class="ui message error">
-            {% blocktranslate count counter=errors|length %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktranslate %}
-            </div>
-        {% endif %}
-
-        <div class="ui segment">{{ form }}</div>
-
-        <div class="ui basic segment" style="margin-top: 0;">
-          <button type="submit" class="ui fluid blue button" value="{% trans 'Submit' %}" name="submit" />{% trans 'Submit' %}</button>
+            {% endblock messages %}
+            <form class="ui form{% if errors %} error{% endif %}"
+                  action="/forms/"
+                  method="post"
+                  novalidate>
+                {% csrf_token %}
+                <div class="width-100">
+                    {% if errors %}
+                        <div class="ui message error">
+                            {% blocktranslate count counter=errors|length %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktranslate %}
+                        </div>
+                    {% endif %}
+                    <div class="ui segment">{{ form }}</div>
+                    <div class="ui basic segment" style="margin-top: 0;">
+                        <button type="submit"
+                                class="ui fluid blue button"
+                                value="{% trans 'Submit' %}"
+                                name="submit" />{% trans 'Submit' %}</button>
+                </div>
+            </form>
         </div>
-    </form>
-
-  </div>
-</div>
+    </div>
 {% endblock %}
-
 {% block extrascript %}
-<script type="text/javascript">
+    <script type="text/javascript">
 $( document ).ready(function() {
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
 });
-</script>
+    </script>
 {% endblock %}
