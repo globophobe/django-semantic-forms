@@ -1,0 +1,13 @@
+{
+  "name": "django-semantic-forms",
+  "private": true,
+  "scripts": {
+    "lint:js": "biome lint semantic_forms/static/semantic_forms",
+    "format:js": "biome format --write semantic_forms/static/semantic_forms",
+    "check:js": "biome check semantic_forms/static/semantic_forms",
+    "fix:js": "biome check --write semantic_forms/static/semantic_forms"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.11"
+  }
+}

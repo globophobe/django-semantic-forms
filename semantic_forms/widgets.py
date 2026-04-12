@@ -10,6 +10,10 @@ class SemanticMixin:
     class Media:
         css = {"all": ["semantic_forms/unsemantic.css"]}
 
+    def use_required_attribute(self, initial) -> bool:
+        """Disable browser-native required validation."""
+        return False
+
 
 class SemanticSelectMixin(SemanticMixin):
     """Semantic select mixin."""

@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.safestring import mark_safe
+from django.utils.translation import gettext_lazy as _
 
 from semantic_forms import SemanticForm
 from semantic_forms.fields import (
@@ -15,11 +16,6 @@ from semantic_forms.fields import (
     SemanticTimeField,
 )
 
-try:
-    from django.utils.translation import gettext_lazy as _  # Django >= 4
-except ImportError:
-    from django.utils.translation import ugettext_lazy as _
-
 
 class Colors(models.TextChoices):
     """Colors"""
@@ -34,9 +30,7 @@ class SemanticKitchenSinkForm(SemanticForm):
 
     char_field = SemanticCharField(
         label=_("Char"),
-        help_text=mark_safe(
-            "<pre><code>char_field = SemanticCharField()</code></pre>"
-        ),
+        help_text=mark_safe("<pre><code>char_field = SemanticCharField()</code></pre>"),
     )
     datetime_field = SemanticDateTimeField(
         label=_("Datetime"),
@@ -46,15 +40,11 @@ class SemanticKitchenSinkForm(SemanticForm):
     )
     date_field = SemanticDateField(
         label=_("Date"),
-        help_text=mark_safe(
-            "<pre><code>date_field = SemanticDateField()</code></pre>"
-        ),
+        help_text=mark_safe("<pre><code>date_field = SemanticDateField()</code></pre>"),
     )
     time_field = SemanticTimeField(
         label=_("Time"),
-        help_text=mark_safe(
-            "<pre><code>time_field = SemanticTimeField()</code></pre>"
-        ),
+        help_text=mark_safe("<pre><code>time_field = SemanticTimeField()</code></pre>"),
     )
     textarea_field = SemanticTextareaField(
         label=_("Text"),

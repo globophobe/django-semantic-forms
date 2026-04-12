@@ -59,7 +59,6 @@ class SemanticFilterSet(FilterSet):
 
         # perform lookup specific checks
         if lookup_type == "exact" and getattr(field, "choices", None):
-
             # BEGIN CUSTOMIZATION
             return SemanticChoiceFilter, {"choices": field.choices}
             # END CUSTOMIZATION

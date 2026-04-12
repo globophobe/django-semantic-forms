@@ -1,13 +1,9 @@
 from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.utils.translation import gettext_lazy as _
 
 from .forms import SemanticKitchenSinkForm
-
-try:
-    from django.utils.translation import gettext_lazy as _  # Django >= 4
-except ImportError:
-    from django.utils.translation import ugettext_lazy as _
 
 BASIC_TEMPLATE = """{% extends "semantic_forms/base.html" %}
 
