@@ -34,6 +34,7 @@ dev = [
     "djlint>=1.36.4",
     "django-debug-toolbar>=4.2.0",
     "django-upgrade>=1.30.0",
+    "invoke>=2.2.1",
     "python-dotenv>=1.1.1",
     "ruff>=0.15.2",
 ]
