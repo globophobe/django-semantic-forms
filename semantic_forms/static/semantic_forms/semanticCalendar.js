@@ -26,39 +26,60 @@ const months = [
   "December",
 ];
 
+const shortDays = ["S", "M", "T", "W", "T", "F", "S"];
+const shortMonths = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+function hasCalendarTranslations(hasJavascriptCatalog) {
+  return (
+    hasJavascriptCatalog &&
+    typeof gettext === "function" &&
+    typeof pgettext === "function"
+  );
+}
+
+function getDefaultCalendarText() {
+  return {
+    days: shortDays,
+    months: months,
+    monthsShort: shortMonths,
+    today: "Today",
+    now: "Now",
+  };
+}
+
 function getCalendarText(hasJavascriptCatalog) {
-  if (hasJavascriptCatalog) {
-    return {
-      days: ["S", "M", "T", "W", "T", "F", "S"].map(
-        function (oneLetterDay, index) {
-          const day = days[index];
-          return pgettext(`one letter ${day}`, oneLetterDay);
-        },
-      ),
-      months: months.map(function (month) {
-        return gettext(month);
-      }),
-      monthsShort: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-      ].map(function (monthShort, index) {
-        const monthLong = months[index];
-        return pgettext(`abbrev. month ${monthLong}`, monthShort);
-      }),
-      today: gettext("Today"),
-      now: gettext("Now"),
-    };
+  if (!hasCalendarTranslations(hasJavascriptCatalog)) {
+    return getDefaultCalendarText();
   }
+
+  return {
+    days: shortDays.map(function (oneLetterDay, index) {
+      const day = days[index];
+      return pgettext(`one letter ${day}`, oneLetterDay);
+    }),
+    months: months.map(function (month) {
+      return gettext(month);
+    }),
+    monthsShort: shortMonths.map(function (monthShort, index) {
+      const monthLong = months[index];
+      return pgettext(`abbrev. month ${monthLong}`, monthShort);
+    }),
+    today: gettext("Today"),
+    now: gettext("Now"),
+  };
 }
 
 function getCalendarOptions(type, hasJavascriptCatalog) {
