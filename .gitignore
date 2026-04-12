@@ -1,6 +1,7 @@
 .coverage
 .env
 .venv/
+node_modules/
 *.pyc
 *.sqlite3
 
