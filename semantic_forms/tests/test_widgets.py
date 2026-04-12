@@ -8,6 +8,7 @@ from semantic_forms.widgets import (
     RangeWidget,
     SemanticDateInput,
     SemanticDateTimeInput,
+    SemanticTextInput,
 )
 
 
@@ -61,3 +62,11 @@ class SemanticCalendarWidgetTests(SimpleTestCase):
 
         self.assertEqual(widget.decompress(range(1, 3)), [1, 3])
         self.assertEqual(widget.decompress(None), [None, None])
+
+    def test_semantic_widgets_do_not_render_native_required_attributes(self):
+        class ExampleForm(forms.Form):
+            name = forms.CharField(widget=SemanticTextInput())
+
+        rendered = ExampleForm()["name"].as_widget()
+
+        self.assertNotIn(" required", rendered)
