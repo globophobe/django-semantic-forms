@@ -83,15 +83,33 @@ function getCalendarText(hasJavascriptCatalog) {
 }
 
 function getCalendarOptions(type, hasJavascriptCatalog) {
+  function formatDate(date) {
+    const year = date.getFullYear();
+    const month = ("0" + (date.getMonth() + 1)).slice(-2);
+    const day = ("0" + date.getDate()).slice(-2);
+    return year + "-" + month + "-" + day;
+  }
+
+  function formatTime(date) {
+    const hours = ("0" + date.getHours()).slice(-2);
+    const minutes = ("0" + date.getMinutes()).slice(-2);
+    return hours + ":" + minutes;
+  }
+
   return {
     type,
     formatter: {
       date: function (date, _settings) {
         if (!date) return "";
-        const year = date.getFullYear();
-        const month = ("0" + (date.getMonth() + 1)).slice(-2);
-        const day = ("0" + date.getDate()).slice(-2);
-        return year + "-" + month + "-" + day;
+        return formatDate(date);
+      },
+      datetime: function (date, _settings) {
+        if (!date) return "";
+        return formatDate(date) + " " + formatTime(date);
+      },
+      time: function (date, _settings) {
+        if (!date) return "";
+        return formatTime(date);
       },
     },
     ampm: false,
