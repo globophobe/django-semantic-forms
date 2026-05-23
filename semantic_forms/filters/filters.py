@@ -1,4 +1,14 @@
+from django import forms
 from django.utils.translation import gettext_lazy as _
+from django_filters.conf import settings
+from django_filters.fields import (
+    ChoiceField as FilterChoiceField,
+    ChoiceIterator,
+    ChoiceIteratorMixin,
+    ModelChoiceField as FilterModelChoiceField,
+    ModelMultipleChoiceField as FilterModelMultipleChoiceField,
+    MultipleChoiceField as FilterMultipleChoiceField,
+)
 from django_filters.filters import (
     AllValuesFilter,
     AllValuesMultipleFilter,
@@ -14,21 +24,64 @@ from django_filters.filters import (
 )
 
 from semantic_forms.fields import (
-    SemanticChoiceField,
     SemanticDateField,
     SemanticDateTimeField,
-    SemanticModelChoiceField,
-    SemanticModelMultipleChoiceField,
-    SemanticMultipleChoiceField,
     SemanticTimeField,
-    SemanticTypedChoiceField,
-    SemanticTypedMultipleChoiceField,
 )
+from semantic_forms.widgets import SemanticSelect, SemanticSelectMultiple
 
 BOOLEAN_CHOICES = (
     ("true", _("Yes")),
     ("false", _("No")),
 )
+
+
+class SemanticFilterChoiceField(FilterChoiceField):
+    """Semantic filter choice field."""
+
+    widget = SemanticSelect
+
+
+class SemanticFilterMultipleChoiceField(FilterMultipleChoiceField):
+    """Semantic filter multiple choice field."""
+
+    widget = SemanticSelectMultiple
+
+
+class SemanticFilterTypedChoiceField(ChoiceIteratorMixin, forms.TypedChoiceField):
+    """Semantic filter typed choice field."""
+
+    iterator = ChoiceIterator
+    widget = SemanticSelect
+
+    def __init__(self, *args, **kwargs):
+        self.empty_label = kwargs.pop("empty_label", settings.EMPTY_CHOICE_LABEL)
+        super().__init__(*args, **kwargs)
+
+
+class SemanticFilterTypedMultipleChoiceField(
+    ChoiceIteratorMixin, forms.TypedMultipleChoiceField
+):
+    """Semantic filter typed multiple choice field."""
+
+    iterator = ChoiceIterator
+    widget = SemanticSelectMultiple
+
+    def __init__(self, *args, **kwargs):
+        self.empty_label = None
+        super().__init__(*args, **kwargs)
+
+
+class SemanticFilterModelChoiceField(FilterModelChoiceField):
+    """Semantic filter model choice field."""
+
+    widget = SemanticSelect
+
+
+class SemanticFilterModelMultipleChoiceField(FilterModelMultipleChoiceField):
+    """Semantic filter model multiple choice field."""
+
+    widget = SemanticSelectMultiple
 
 
 def coerce_boolean(value):
@@ -61,25 +114,33 @@ class SemanticTimeFilter(TimeFilter):
 class SemanticChoiceFilter(ChoiceFilter):
     """Semantic choice filter."""
 
-    field_class = SemanticChoiceField
+    field_class = SemanticFilterChoiceField
+
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault("empty_label", "")
+        super().__init__(*args, **kwargs)
 
 
 class SemanticMultipleChoiceFilter(MultipleChoiceFilter):
     """Semantic multiple choice filter."""
 
-    field_class = SemanticMultipleChoiceField
+    field_class = SemanticFilterMultipleChoiceField
 
 
 class SemanticTypedChoiceFilter(TypedChoiceFilter):
     """Semantic typed choice filter."""
 
-    field_class = SemanticTypedChoiceField
+    field_class = SemanticFilterTypedChoiceField
+
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault("empty_label", "")
+        super().__init__(*args, **kwargs)
 
 
 class SemanticTypedMultipleChoiceFilter(TypedMultipleChoiceFilter):
     """Semantic typed multiple choice filter."""
 
-    field_class = SemanticTypedMultipleChoiceField
+    field_class = SemanticFilterTypedMultipleChoiceField
 
 
 class SemanticBooleanFilter(SemanticTypedMultipleChoiceFilter):
@@ -98,22 +159,30 @@ class SemanticBooleanFilter(SemanticTypedMultipleChoiceFilter):
 class SemanticAllValuesFilter(AllValuesFilter):
     """Semantic all values filter."""
 
-    field_class = SemanticChoiceField
+    field_class = SemanticFilterChoiceField
+
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault("empty_label", "")
+        super().__init__(*args, **kwargs)
 
 
 class SemanticMultipleAllValuesFilter(AllValuesMultipleFilter):
     """Semantic multiple all values filter."""
 
-    field_class = SemanticMultipleChoiceField
+    field_class = SemanticFilterMultipleChoiceField
 
 
 class SemanticModelChoiceFilter(ModelChoiceFilter):
     """Semantic model choice filter."""
 
-    field_class = SemanticModelChoiceField
+    field_class = SemanticFilterModelChoiceField
+
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault("empty_label", "")
+        super().__init__(*args, **kwargs)
 
 
 class SemanticModelMultipleChoiceFilter(ModelMultipleChoiceFilter):
     """Semantic model multiple choice filter."""
 
-    field_class = SemanticModelMultipleChoiceField
+    field_class = SemanticFilterModelMultipleChoiceField
