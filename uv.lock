@@ -7,7 +7,7 @@ resolution-markers = [
 ]
 
 [options]
-exclude-newer = "2026-05-16T04:30:16.671628933Z"
+exclude-newer = "2026-05-19T13:29:21.887085891Z"
 exclude-newer-span = "P7D"
 
 [[package]]
@@ -120,7 +120,7 @@ wheels = [
 
 [[package]]
 name = "django-semantic-forms"
-version = "0.1.12"
+version = "0.1.14"
 source = { editable = "." }
 dependencies = [
     { name = "django", version = "5.2.12", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
