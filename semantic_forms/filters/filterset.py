@@ -10,12 +10,14 @@ from django_filters.filterset import FILTER_FOR_DBFIELD_DEFAULTS
 from django_filters.utils import try_dbfield
 
 from .filters import (
+    SemanticBooleanFilter,
     SemanticChoiceFilter,
     SemanticModelChoiceFilter,
     SemanticModelMultipleChoiceFilter,
 )
 
 SEMANTIC_FILTER_FOR_DBFIELD_DEFAULTS = {
+    models.BooleanField: SemanticBooleanFilter,
     # Forward relationships
     models.OneToOneField: SemanticModelChoiceFilter,
     models.ForeignKey: SemanticModelChoiceFilter,
