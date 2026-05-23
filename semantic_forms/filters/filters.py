@@ -2,12 +2,12 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 from django_filters.conf import settings
 from django_filters.fields import (
-    ChoiceField as FilterChoiceField,
+    ChoiceField,
     ChoiceIterator,
     ChoiceIteratorMixin,
-    ModelChoiceField as FilterModelChoiceField,
-    ModelMultipleChoiceField as FilterModelMultipleChoiceField,
-    MultipleChoiceField as FilterMultipleChoiceField,
+    ModelChoiceField,
+    ModelMultipleChoiceField,
+    MultipleChoiceField,
 )
 from django_filters.filters import (
     AllValuesFilter,
@@ -36,13 +36,22 @@ BOOLEAN_CHOICES = (
 )
 
 
-class SemanticFilterChoiceField(FilterChoiceField):
+def coerce_boolean(value):
+    """Coerce semantic boolean filter values."""
+    if value in (True, "true", "True", "1", 1):
+        return True
+    if value in (False, "false", "False", "0", 0):
+        return False
+    return value
+
+
+class SemanticFilterChoiceField(ChoiceField):
     """Semantic filter choice field."""
 
     widget = SemanticSelect
 
 
-class SemanticFilterMultipleChoiceField(FilterMultipleChoiceField):
+class SemanticFilterMultipleChoiceField(MultipleChoiceField):
     """Semantic filter multiple choice field."""
 
     widget = SemanticSelectMultiple
@@ -72,25 +81,16 @@ class SemanticFilterTypedMultipleChoiceField(
         super().__init__(*args, **kwargs)
 
 
-class SemanticFilterModelChoiceField(FilterModelChoiceField):
+class SemanticFilterModelChoiceField(ModelChoiceField):
     """Semantic filter model choice field."""
 
     widget = SemanticSelect
 
 
-class SemanticFilterModelMultipleChoiceField(FilterModelMultipleChoiceField):
+class SemanticFilterModelMultipleChoiceField(ModelMultipleChoiceField):
     """Semantic filter model multiple choice field."""
 
     widget = SemanticSelectMultiple
-
-
-def coerce_boolean(value):
-    """Coerce semantic boolean filter values."""
-    if value in (True, "true", "True", "1", 1):
-        return True
-    if value in (False, "false", "False", "0", 0):
-        return False
-    return value
 
 
 class SemanticDateTimeFilter(DateTimeFilter):
