@@ -1,3 +1,4 @@
+from django import forms
 from django.db import models
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
@@ -28,6 +29,11 @@ class Colors(models.TextChoices):
 class SemanticKitchenSinkForm(SemanticForm):
     """Semantic kitchen sink form"""
 
+    hidden_field = forms.CharField(
+        initial="hidden-demo-value",
+        required=False,
+        widget=forms.HiddenInput,
+    )
     char_field = SemanticCharField(
         label=_("Char"),
         help_text=mark_safe("<pre><code>char_field = SemanticCharField()</code></pre>"),
