@@ -37,7 +37,7 @@ This package uses [Fomantic UI](https://fomantic-ui.com/) the official community
 For example:
 
 ```html
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.css" integrity="sha384-b5SW2bA5CBv/WeySOaDac2n4fnB+yd1vfmnWhES5vUjF4ZGsxsNt6sUsq75J1gOa" crossorigin="anonymous" referrerpolicy="no-referrer">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.js" integrity="sha384-7q6zpNgldX13QoAOADSjVDfLYLoyGIFtXsqNEH+GbudZMHYj4WkexEnJsuNh/0Ph" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 ```
