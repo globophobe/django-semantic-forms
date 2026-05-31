@@ -18,7 +18,7 @@ function semanticChooser() {
         const lookupUrl =
           reverseUrl.substring(0, reverseUrl.length - 1) +
           "-reverse/?id=" +
-          optionValue;
+          encodeURIComponent(optionValue);
         fetch(lookupUrl)
           .then((response) => response.json())
           .then((data) => {
@@ -34,15 +34,15 @@ function semanticChooser() {
       var url = $select.data("ajax-url") + "?term={query}";
       var app_label = $select.data("app-label");
       if (app_label) {
-        url += "&app_label=" + app_label;
+        url += "&app_label=" + encodeURIComponent(app_label);
       }
       var model_name = $select.data("model-name");
       if (model_name) {
-        url += "&model_name=" + model_name;
+        url += "&model_name=" + encodeURIComponent(model_name);
       }
       var field_name = $select.data("field-name");
       if (field_name) {
-        url += "&field_name=" + field_name;
+        url += "&field_name=" + encodeURIComponent(field_name);
       }
       $select.dropdown({
         apiSettings: {

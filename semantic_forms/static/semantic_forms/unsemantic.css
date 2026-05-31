@@ -15,6 +15,21 @@
   padding-top: 0.5em;
 }
 
+.semantic-help-text > .ui.bulleted.list {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.semantic-error-list {
+  color: #9f3a38;
+}
+
+.ui.error.message > .semantic-error-list {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
 .hidden {
   display: none !important;
 }
