@@ -14,5 +14,7 @@ class KitchenSinkViewTests(SimpleTestCase):
         self.assertEqual(content.count("semantic_forms/semanticDropdown.js"), 1)
         self.assertEqual(content.count("semantic_forms/semanticCheckbox.js"), 1)
         self.assertEqual(content.count("semantic_forms/semanticCalendar.js"), 1)
-        self.assertEqual(content.count("semantic_forms/semanticTranslatedCalendar.js"), 1)
+        self.assertEqual(
+            content.count("semantic_forms/semanticTranslatedCalendar.js"), 1
+        )
         self.assertEqual(content.count(catalog_url), 1)

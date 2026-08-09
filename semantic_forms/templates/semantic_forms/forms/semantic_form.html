@@ -2,23 +2,23 @@
 {% for field, error in fields %}
     <div class="field{% if field.name %} field-{{ field.name }}{% endif %}{% if not field.is_readonly and error %} error{% endif %}">
         {% if field|is_checkbox %}<div class="ui checkbox">{% endif %}
-            {% if not field|is_checkbox and not field.is_hidden %}{{ field.label_tag }}{% endif %}
-            {% if field.is_readonly %}
-                <div class="readonly">
-                    {% if field.contents %}
-                        {{ field.contents }}
-                    {% else %}
-                        &nbsp;
-                    {% endif %}
-                </div>
-            {% else %}
-                {{ field }}
-            {% endif %}
-            {% if field|is_checkbox %}{{ field.label_tag }}{% endif %}
-            {% if not form.fields|length == 1 and not field.is_readonly %}{{ error|semantic_error_list }}{% endif %}
-            {% if field|is_checkbox %}</div>{% endif %}
-        {% if field.help_text %}<div class="help semantic-help-text">{{ field.help_text|semantic_help_text }}</div>{% endif %}
-        {% if fields|length == 1 %}{{ errors|semantic_error_list }}{% endif %}
+        {% if not field|is_checkbox and not field.is_hidden %}{{ field.label_tag }}{% endif %}
+        {% if field.is_readonly %}
+            <div class="readonly">
+                {% if field.contents %}
+                    {{ field.contents }}
+                {% else %}
+                    &nbsp;
+                {% endif %}
+            </div>
+        {% else %}
+            {{ field }}
+        {% endif %}
+        {% if field|is_checkbox %}{{ field.label_tag }}{% endif %}
+        {% if not form.fields|length == 1 and not field.is_readonly %}{{ error|semantic_error_list }}{% endif %}
+        {% if field|is_checkbox %}</div>{% endif %}
+    {% if field.help_text %}<div class="help semantic-help-text">{{ field.help_text|semantic_help_text }}</div>{% endif %}
+    {% if fields|length == 1 %}{{ errors|semantic_error_list }}{% endif %}
     </div>
 {% endfor %}
 {% for field in hidden_fields %}{{ field }}{% endfor %}

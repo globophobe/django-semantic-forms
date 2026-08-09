@@ -1,5 +1,4 @@
 from copy import deepcopy
-from typing import Tuple, Type
 
 from django.db import models
 from django.db.models.fields.related import ManyToManyRel, ManyToOneRel, OneToOneRel
@@ -45,7 +44,7 @@ class SemanticFilterSet(FilterSet):
     @classmethod
     def filter_for_lookup(
         cls, field: Field, lookup_type: str
-    ) -> Tuple[Type[FilterSet], dict]:
+    ) -> tuple[type[FilterSet], dict]:
         """Get filter for lookup."""
         DEFAULTS = dict(cls.FILTER_DEFAULTS)
         if hasattr(cls, "_meta"):
