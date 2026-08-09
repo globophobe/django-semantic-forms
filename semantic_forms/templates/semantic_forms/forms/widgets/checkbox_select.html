@@ -8,7 +8,10 @@
             {% include option.template_name with widget=option %}
         {% endfor %}
         {% comment %}Semantic has no option groups!
-            {% if group %}</ul></li>{% endif %}
+            {% if group %}
+</ul>
+</li>
+{% endif %}
         {% endcomment %}
     {% endfor %}
 </div>
