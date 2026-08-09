@@ -47,5 +47,8 @@ packages = ["semantic_forms"]
 [tool.hatch.build.targets.wheel.force-include]
 "demo/demo_app" = "semantic_forms/docs"
 
+[tool.ruff]
+exclude = ["migrations"]
+
 [tool.uv]
 exclude-newer = "P7D"
