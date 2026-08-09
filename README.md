@@ -24,10 +24,7 @@ pip install django-semantic-forms
 Add to `settings.py`:
 
 ```python
-INSTALLED_APPS = [
-    "semantic_forms",
-    ...
-]
+INSTALLED_APPS = ["semantic_forms", ...]
 ```
 
 Please remember to run `python manage.py collectstatic` for production deployments.
