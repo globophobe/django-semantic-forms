@@ -23,7 +23,7 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
 ]
 dependencies = [
-    "django>=5.2",
+    "django>=5.2.18",
 ]
 
 [project.optional-dependencies]
