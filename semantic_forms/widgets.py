@@ -1,4 +1,4 @@
-from typing import Any, Optional
+from typing import Any
 
 from django import forms
 from django.urls import NoReverseMatch, reverse
@@ -8,7 +8,7 @@ class SemanticMixin:
     """Semantic mixin."""
 
     class Media:
-        css = {"all": ["semantic_forms/unsemantic.css"]}
+        css = {"all": ["semantic_forms/unsemantic.css"]}  # noqa: RUF012
 
     def use_required_attribute(self, initial) -> bool:
         """Disable browser-native required validation."""
@@ -21,7 +21,7 @@ class SemanticSelectMixin(SemanticMixin):
     template_name = "semantic_forms/forms/widgets/select.html"
 
     class Media:
-        js = ["semantic_forms/semanticDropdown.js"]
+        js = ["semantic_forms/semanticDropdown.js"]  # noqa: RUF012
 
 
 class SemanticSelect(SemanticSelectMixin, forms.Select):
@@ -36,7 +36,7 @@ class SemanticCheckboxMixin(SemanticMixin):
     """Semantic checkbox mixin."""
 
     class Media:
-        js = ["semantic_forms/semanticCheckbox.js"]
+        js = ["semantic_forms/semanticCheckbox.js"]  # noqa: RUF012
 
 
 class SemanticCheckboxInput(SemanticCheckboxMixin, forms.CheckboxInput):
@@ -82,9 +82,7 @@ class SemanticDateTimeInput(SemanticCalendarMixin, forms.DateTimeInput):
 
     template_name = "semantic_forms/forms/widgets/datetime.html"
 
-    def __init__(
-        self, attrs: Optional[dict] = None, format: Optional[str] = None
-    ) -> None:
+    def __init__(self, attrs: dict | None = None, format: str | None = None) -> None:
         """Initialize."""
         super().__init__(attrs)
         self.format = format or "%Y-%m-%d %H:%M"
@@ -95,9 +93,7 @@ class SemanticDateInput(SemanticCalendarMixin, forms.DateInput):
 
     template_name = "semantic_forms/forms/widgets/date.html"
 
-    def __init__(
-        self, attrs: Optional[dict] = None, format: Optional[str] = None
-    ) -> None:
+    def __init__(self, attrs: dict | None = None, format: str | None = None) -> None:
         """Initialize."""
         super().__init__(attrs)
         self.format = format or "%Y-%m-%d"
@@ -178,7 +174,7 @@ class RangeWidget(forms.MultiWidget):
 class SemanticDateRangeWidget(RangeWidget):
     """Semantic date range widget."""
 
-    def __init__(self, attrs: Optional[dict] = None) -> None:
+    def __init__(self, attrs: dict | None = None) -> None:
         """Initialize."""
         widgets = [SemanticDateInput, SemanticDateInput]
         super().__init__(widgets, attrs)
@@ -187,7 +183,7 @@ class SemanticDateRangeWidget(RangeWidget):
 class SemanticTimeRangeWidget(RangeWidget):
     """Semantic time range widget."""
 
-    def __init__(self, attrs: Optional[dict] = None) -> None:
+    def __init__(self, attrs: dict | None = None) -> None:
         """Initialize."""
         widgets = [SemanticTimeInput(), SemanticTimeInput()]
         super().__init__(widgets, attrs)

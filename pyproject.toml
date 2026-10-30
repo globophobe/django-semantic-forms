@@ -4,10 +4,10 @@ build-backend = "hatchling.build"
 
 [project]
 name = "django-semantic-forms"
-version = "0.1.14"
+version = "0.1.15"
 description = "Django Semantic UI forms"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "Alex", email = "globophobe@gmail.com" }]
 keywords = ["django", "semantic", "forms"]
@@ -15,9 +15,15 @@ classifiers = [
     "Framework :: Django",
     "Development Status :: 4 - Beta",
     "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 ]
 dependencies = [
-    "django>=5.2",
+    "django>=5.2.18",
 ]
 
 [project.optional-dependencies]
@@ -46,6 +52,9 @@ packages = ["semantic_forms"]
 
 [tool.hatch.build.targets.wheel.force-include]
 "demo/demo_app" = "semantic_forms/docs"
+
+[tool.ruff]
+exclude = ["migrations"]
 
 [tool.uv]
 exclude-newer = "P7D"
